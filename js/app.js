@@ -51,6 +51,18 @@ function showReason(reason) {
 }
 const themeBtn = document.querySelector(".theme-btn");
 
+
+function showAlternatives() {
+  const section = document.getElementById("alternatives");
+
+  if (section) {
+    section.scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+}
+
+
 // Toggle theme
 themeBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
@@ -74,3 +86,22 @@ if (savedTheme === "dark") {
   themeBtn.textContent = "🌙";
 }
 
+// SCROLL ANIMATION FOR FEATURE CARDS
+const featureCards = document.querySelectorAll(".feature-card");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  },
+  {
+    threshold: 1.0
+  }
+);
+
+featureCards.forEach(card => {
+  observer.observe(card);
+});
