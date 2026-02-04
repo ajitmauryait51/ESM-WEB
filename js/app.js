@@ -105,3 +105,49 @@ const observer = new IntersectionObserver(
 featureCards.forEach(card => {
   observer.observe(card);
 });
+
+
+const productcard = document.querySelectorAll(".product-card");
+
+const observe = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  },
+  {
+    threshold: 1.0
+  }
+);
+
+productcard.forEach(card => {
+  observer.observe(card);
+});
+
+// SMOOTH SCROLL FOR NAVBAR LINKS
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault(); // stop instant jump
+
+    const targetId = this.getAttribute("href").substring(1);
+    const targetSection = document.getElementById(targetId);
+
+    if (targetSection) {
+      targetSection.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+  });
+});
+
+
+function showReason(reason) {
+  document.getElementById("modalText").textContent = reason;
+  document.getElementById("whyModal").classList.add("show");
+}
+
+function closeModal() {
+  document.getElementById("whyModal").classList.remove("show");
+}
