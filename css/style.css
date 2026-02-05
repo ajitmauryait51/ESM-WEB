@@ -170,10 +170,14 @@ a{
     margin-top: 20px;
 }
 
+.why-switch li{
+    line-height: 2.8;
+    text-indent: 10px;
+    list-style-type: none;;
+}
 /*Impact*/
 .impact p{
-  line-height: 1.6;
-  /* margin-bottom: 12px; */
+  line-height: 2.8;
 }
 
 .why-switch ul {
